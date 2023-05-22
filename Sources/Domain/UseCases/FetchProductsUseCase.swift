@@ -14,7 +14,7 @@ public protocol FetchProductsUseCaseProtocol {
     func execute() async throws -> [Product]
 }
 
-class FetchProductsUseCase: FetchProductsUseCaseProtocol {
+public class FetchProductsUseCase: FetchProductsUseCaseProtocol {
     private let productRepository: ProductRepositoryProtocol
     
 
@@ -23,7 +23,7 @@ class FetchProductsUseCase: FetchProductsUseCaseProtocol {
     }
 
     @available(macOS 10.15, *)
-    func execute() async throws -> [Product] {
+    public func execute() async throws -> [Product] {
         let object = try await productRepository.fetchProducts()
         return object.map { $0.toDomain() }
     }
