@@ -7,7 +7,12 @@
 
 import Foundation
 import Combine
-import DataLayer
+
+public protocol ProductRepositoryProtocol {
+    @available(iOS 15.0, *)
+    @available(macOS 10.15, *)
+    func fetchProducts() async throws -> [Product]
+}
 
 @available(iOS 15.0, *)
 @available(macOS 10.15, *)
@@ -15,17 +20,17 @@ public protocol FetchProductsUseCaseProtocol {
     func execute() async throws -> [Product]
 }
 
-public class FetchProductsUseCase: FetchProductsUseCaseProtocol {
+class FetchProductsUseCase: FetchProductsUseCaseProtocol {
     private let productRepository: ProductRepositoryProtocol
     
 
-    public init(productRepository: ProductRepositoryProtocol) {
+    init(productRepository: ProductRepositoryProtocol) {
         self.productRepository = productRepository
     }
 
     @available(iOS 15.0, *)
     @available(macOS 10.15, *)
-    public func execute() async throws -> [Product] {
+    func execute() async throws -> [Product] {
         let object = try await productRepository.fetchProducts()
         return object.map { $0.toDomain() }
     }

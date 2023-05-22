@@ -25,34 +25,3 @@ public struct Product: Equatable, Hashable, Identifiable {
         self.category = category
     }
 }
-
-extension Product {
-    public func toDTO() -> ProductDTO {
-        return ProductDTO(id: self.id,
-                          title: self.title,
-                          price: self.price,
-                          description: self.description,
-                          image: self.image,
-                          category: self.category)
-    }
-    
-    public func toDomain(obj: ProductDTO) -> Product {
-        return Product(id: obj.id,
-                          title: obj.title,
-                          price: obj.price,
-                          description: obj.description,
-                          image: obj.image,
-                          category: obj.category)
-    }
-}
-
-extension ProductDTO {
-    public func toDomain() -> Product {
-        return Product(id: self.id,
-                          title: self.title,
-                          price: self.price,
-                          description: self.description,
-                          image: self.image,
-                          category: self.category)
-    }
-}
