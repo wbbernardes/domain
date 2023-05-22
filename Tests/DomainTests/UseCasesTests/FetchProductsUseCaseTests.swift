@@ -10,6 +10,7 @@ import Combine
 @testable import Domain
 import DataLayer
 
+@available(iOS 15.0, *)
 @available(macOS 10.15, *)
 class FetchProductsUseCaseTests: XCTestCase {
     

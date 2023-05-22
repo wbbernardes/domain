@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import DataLayer
 
+@available(iOS 15.0, *)
 @available(macOS 10.15, *)
 public protocol FetchProductsUseCaseProtocol {
     func execute() async throws -> [Product]
@@ -22,6 +23,7 @@ public class FetchProductsUseCase: FetchProductsUseCaseProtocol {
         self.productRepository = productRepository
     }
 
+    @available(iOS 15.0, *)
     @available(macOS 10.15, *)
     public func execute() async throws -> [Product] {
         let object = try await productRepository.fetchProducts()
