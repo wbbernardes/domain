@@ -10,11 +10,11 @@ import DataLayer
 
 public struct Product: Equatable, Hashable, Identifiable {
     public let id: Int
-    let title: String
-    let price: Double
-    let description: String
-    let image: String
-    let category: String
+    public let title: String
+    public let price: Double
+    public let description: String
+    public let image: String
+    public let category: String
 }
 
 extension Product {
