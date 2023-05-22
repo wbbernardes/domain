@@ -15,6 +15,15 @@ public struct Product: Equatable, Hashable, Identifiable {
     public let description: String
     public let image: String
     public let category: String
+    
+    public init(id: Int, title: String, price: Double, description: String, image: String, category: String) {
+        self.id = id
+        self.title = title
+        self.price = price
+        self.description = description
+        self.image = image
+        self.category = category
+    }
 }
 
 extension Product {
