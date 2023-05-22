@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import DataLayer
 
 public struct Product: Equatable, Hashable, Identifiable {
     public let id: Int
