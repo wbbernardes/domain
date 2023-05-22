@@ -8,7 +8,7 @@
 import Foundation
 import DataLayer
 
-struct Product: Equatable {
+public struct Product: Equatable {
     let id: Int
     let title: String
     let price: Double
@@ -18,7 +18,7 @@ struct Product: Equatable {
 }
 
 extension Product {
-    func toDTO() -> ProductDTO {
+    public func toDTO() -> ProductDTO {
         return ProductDTO(id: self.id,
                           title: self.title,
                           price: self.price,
@@ -27,7 +27,7 @@ extension Product {
                           category: self.category)
     }
     
-    func toDomain(obj: ProductDTO) -> Product {
+    public func toDomain(obj: ProductDTO) -> Product {
         return Product(id: obj.id,
                           title: obj.title,
                           price: obj.price,
@@ -38,7 +38,7 @@ extension Product {
 }
 
 extension ProductDTO {
-    func toDomain() -> Product {
+    public func toDomain() -> Product {
         return Product(id: self.id,
                           title: self.title,
                           price: self.price,

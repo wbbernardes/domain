@@ -10,7 +10,7 @@ import Combine
 import DataLayer
 
 @available(macOS 10.15, *)
-protocol FetchProductsUseCaseProtocol {
+public protocol FetchProductsUseCaseProtocol {
     func execute() async throws -> [Product]
 }
 
