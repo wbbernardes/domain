@@ -18,7 +18,7 @@ public class FetchProductsUseCase: FetchProductsUseCaseProtocol {
     private let productRepository: ProductRepositoryProtocol
     
 
-    init(productRepository: ProductRepositoryProtocol) {
+    public init(productRepository: ProductRepositoryProtocol) {
         self.productRepository = productRepository
     }
 
