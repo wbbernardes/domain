@@ -14,6 +14,15 @@ import DataLayer
 @available(macOS 10.15, *)
 class FetchProductsUseCaseTests: XCTestCase {
     
+    public enum APIError: Error {
+        case badRequest // 400
+        case unauthorized // 401
+        case forbidden // 403
+        case notFound // 404
+        case serverError // 500
+        case unknown
+    }
+    
     var productRepositoryMock: ProductRepositoryMock!
     var fetchProductsUseCase: FetchProductsUseCaseProtocol!
 
@@ -32,7 +41,7 @@ class FetchProductsUseCaseTests: XCTestCase {
     func testFetchProductsUseCaseSuccess() async throws {
         // Given
         let expectedProducts = [Product(id: 1, title: "Test Product", price: 10.0, description: "This is a test product", image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg", category: "test")]
-        productRepositoryMock.nextResult = .success(expectedProducts.map { $0.toDTO() })
+        productRepositoryMock.nextResult = .success(expectedProducts)
 
         // When
         let products = try await fetchProductsUseCase.execute()

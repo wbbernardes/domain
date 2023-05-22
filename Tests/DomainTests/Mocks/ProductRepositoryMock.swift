@@ -6,12 +6,22 @@
 //
 
 import Combine
-import DataLayer
+import Domain
 
 public class ProductRepositoryMock: ProductRepositoryProtocol {
-    public var nextResult: Result<[ProductDTO], Error>?
     
-    public func fetchProducts() async throws -> [ProductDTO] {
+    public enum APIError: Error {
+        case badRequest // 400
+        case unauthorized // 401
+        case forbidden // 403
+        case notFound // 404
+        case serverError // 500
+        case unknown
+    }
+    
+    public var nextResult: Result<[Product], Error>?
+    
+    public func fetchProducts() async throws -> [Product] {
         // Simulate network delay
         try await Task.sleep(nanoseconds: 1_000_000_000) // sleep for 1 second
         

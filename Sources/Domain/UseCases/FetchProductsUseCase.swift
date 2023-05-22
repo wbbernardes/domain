@@ -31,7 +31,6 @@ class FetchProductsUseCase: FetchProductsUseCaseProtocol {
     @available(iOS 15.0, *)
     @available(macOS 10.15, *)
     func execute() async throws -> [Product] {
-        let object = try await productRepository.fetchProducts()
-        return object.map { $0.toDomain() }
+        return try await productRepository.fetchProducts()
     }
 }
