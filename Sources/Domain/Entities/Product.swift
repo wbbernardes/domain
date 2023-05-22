@@ -8,8 +8,8 @@
 import Foundation
 import DataLayer
 
-public struct Product: Equatable {
-    let id: Int
+public struct Product: Equatable, Hashable, Identifiable {
+    public let id: Int
     let title: String
     let price: Double
     let description: String
