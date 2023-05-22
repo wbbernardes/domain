@@ -34,3 +34,13 @@ class FetchProductsUseCase: FetchProductsUseCaseProtocol {
         return try await productRepository.fetchProducts()
     }
 }
+
+@available(iOS 15.0, *)
+@available(macOS 10.15, *)
+public struct FetchProductsUseCaseFactory {
+    public init() {}
+    
+    public func makeProductsUseCase(productRepository: ProductRepositoryProtocol) -> FetchProductsUseCaseProtocol {
+        return FetchProductsUseCase(productRepository: productRepository)
+    }
+}
