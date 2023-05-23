@@ -38,9 +38,7 @@ class FetchProductsUseCase: FetchProductsUseCaseProtocol {
 @available(iOS 15.0, *)
 @available(macOS 10.15, *)
 public struct FetchProductsUseCaseFactory {
-    public init() {}
-    
-    public func makeProductsUseCase(productRepository: ProductRepositoryProtocol) -> FetchProductsUseCaseProtocol {
+    public static func makeProductsUseCase(productRepository: ProductRepositoryProtocol) -> FetchProductsUseCaseProtocol {
         return FetchProductsUseCase(productRepository: productRepository)
     }
 }
